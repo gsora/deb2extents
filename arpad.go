@@ -79,8 +79,7 @@ func addPadding(out *os.File) error {
 	copy(buf[58:], "`\n")
 
 	out.Write(buf)
-	out.Truncate(int64(newpos))
-	out.Seek(0, io.SeekEnd)
+	out.Seek(int64(newpos), io.SeekStart)
 
 	return nil
 }
